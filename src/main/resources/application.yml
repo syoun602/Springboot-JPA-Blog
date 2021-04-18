@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create # 여기서 create란 테이블을 새로 만들겠다는 뜻 / 즉, 최초에는 create로 하되, 나중엔 update로 변경해야 함
+      ddl-auto: update # 여기서 create란 테이블을 새로 만들겠다는 뜻 / 즉, 최초에는 create로 하되, 나중엔 update로 변경해야 함
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Entity를 만들 때, 변수명 그대로 DB에 필드로 넣어줌
         # SpringPhysicalNamingStrategy를 쓰게 될 경우, 카멜 표기법을 underscore로 변경함 ex) myEmail -> my_email
