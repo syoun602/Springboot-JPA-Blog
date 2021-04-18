@@ -16,7 +16,7 @@ public class HttpControllerTest {
         m.setUsername("cos");
         System.out.println(TAG + "setter : " + m.getUsername());
         return "lombok test 완료";
-        //test
+        //test1
 
     }
     //인터넷 브라우저 요청은 무조건 get 요청 밖에 할 수 없다. (post, put, get은 안됨)
