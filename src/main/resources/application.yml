@@ -22,13 +22,14 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create # 여기서 create란 테이블을 새로 만들겠다는 뜻 / 즉, 최초에는 create로 하되, 나중엔 update로 변경해야 함
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
-    show-sql: true
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Entity를 만들 때, 변수명 그대로 DB에 필드로 넣어줌
+        # SpringPhysicalNamingStrategy를 쓰게 될 경우, 카멜 표기법을 underscore로 변경함 ex) myEmail -> my_email
+      use-new-id-generator-mappings: false # JPA의 기본 numbering 전략을 따르지 않겠다
+    show-sql: true # console 창에 쿼리 보여주는 역할
     properties:
-      hibernate.format_sql: true
+      hibernate.format_sql: true # 원래는 한줄로 보여주는데, 해당 문구를 통해 정렬된 쿼리문을 보여줌
 
   jackson:
     serialization:

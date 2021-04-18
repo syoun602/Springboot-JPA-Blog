@@ -9,7 +9,7 @@ public class HttpControllerTest {
 
     private static final String TAG = "HttpControllerTest : ";
 
-    // localhost:8000/blog/http/lombok
+    // http://localhost:8000/blog/http/lombok
     @GetMapping("/http/lombok")
     public String lombokTest() {
         Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
