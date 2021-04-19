@@ -26,7 +26,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 DB의 넘버링 전략을 따라간다. auto_inc를 사용하겠다는 뜻
     private int id; // auto_increment
 
-    @Column(nullable = false, length = 30) // null 이 될 수 없으며, 30자를 넘을 수 없다
+    @Column(nullable = false, length = 30, unique = true) // null 이 될 수 없으며, 30자를 넘을 수 없다
     private String username; // ID
 
     @Column(nullable = false, length = 100) // 1234 -> 해시를 통해 비밀번호 암호화할꺼라 길어야 한다
