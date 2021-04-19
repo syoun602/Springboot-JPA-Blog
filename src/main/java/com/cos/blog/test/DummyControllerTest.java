@@ -4,6 +4,10 @@ import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +24,18 @@ public class DummyControllerTest {
     // 원래는 userRepository가 Null인데, @Autowired로 DummyControllerTest가 memory에 뜰 때, userRepository 같이 띄움
     private UserRepository userRepository;
 
-    @GetMapping("/dummy/user")
+    @GetMapping("/dummy/users")
     public List<User> list() {
         return userRepository.findAll();
+    }
+
+    //한 페이지당 2 건에 데이터를 리턴받기
+    @GetMapping("/dummy/user")
+    public List<User> pageList(@PageableDefault(size=2, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<User> pagingUser = userRepository.findAll(pageable);
+        List<User> users = pagingUser.getContent();
+
+        return users;
     }
 
     // {id} 주소로 파라미터를 전달 받을 수 있음.
